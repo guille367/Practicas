@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+        <input type="button" value="Click" onclick="ejecutar()">
+    <body>
+        <script type="application/javascript">
+            
+        var stock = {
+            'tornillo': 10,
+            'tuerca': 2,
+            'cable': 4,
+            'sensor': 5
+        };
+            
+        var maquinas = [{'tornillo': 23, 'cable': 20}, {'tuerca': 15, 'cable': 12, 'sensor': 23}];
+
+            function ejecutar(){
+                cuanto_comprar(stock,maquinas);
+            }
+            
+            function cuanto_comprar(stock, maquinas){
+            
+                var herramientas_necesarias = {
+                    'tornillo': 0,
+                    'tuerca': 0,
+                    'cable': 0,
+                    'sensor': 0
+                };
+                
+                for(var i = 0; i < maquinas.length ; i++)
+                {
+                    
+                    
+                    for(herramienta in maquinas[i])
+                    {
+                        herramientas_necesarias[herramienta] += maquinas[i][herramienta] - stock[herramienta]
+                        
+                         if((stock[herramienta] - maquinas[i][herramienta]) < 0)
+                             stock[herramienta] = 0;
+                         else
+                            {
+                                stock[herramienta] += stock[herramienta] - maquinas[i][herramienta];
+                            }
+                    }
+                    
+                }
+    
+    
+           return herramientas_necesarias;
+        }
+        </script>
+    </body>
+</html>
+
+/*if(maquinas[i].tornillo != undefined){
+                    tornillos_necesarios += maquinas[i].tornillo - stock.tornillo;
+                    if((stock.tornillo - maquinas[i].tornillo) < 0)
+                      stock.tornillo = 0;
+                    else
+                    stock.tornillo -= maquinas[i].tornillo;
+                    }
+                    
+                    if(maquinas[i].tornillo != undefined){
+                    tuercas_necesarias += maquinas[i].tuerca - stock.tuerca;
+                        
+                    if((stock.tuerca - maquinas[i].tuerca) < 0)
+                    stock.tuerca = 0;
+                    else
+                    stock.tuerca -= maquinas[i].tuerca;
+                    }
+                    
+                    
+                    cables_necesarios += maquinas[i].cable - stock.cable;
+                    stock.cable -= maquinas[i].cable;
+                    
+                    
+                    sensores_necesarios += maquinas[i].sensor - stock.sensor;
+                    stock.sensor -= maquinas[i].sensor;*/
